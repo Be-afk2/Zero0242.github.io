@@ -55,4 +55,13 @@
 			async=""></script>
 		<script src="enable-threads.js"></script>
 	</body>
+	<script>
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/drift_worker.js', { scope: '/' })
+			  .then(reg => console.log('Service Worker registrado con éxito:', reg))
+			  .catch(err => console.error('Error al registrar Service Worker:', err));
+		  });
+		}
+	  </script>
 </html>
